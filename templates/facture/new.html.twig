@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}">	
+	<link rel="stylesheet" href="{{ asset('css/login.css') }}">
+{% endblock %}
+{% block title %}New Facture{% endblock %}
+
+{% block body %}
+    <h1>Create new Facture</h1>
+
+    {{ include('facture/_form.html.twig') }}
+
+    <a href="{{ path('facture_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+{% endblock %}
+{% block title %}Abonnement index{% endblock %}
+
+{% block body %}
+    <h1>Abonnement index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Contrat</th>
+                <th>Date</th>
+                <th>CumulAnc</th>
+                <th>CumulNouv</th>
+                <th>Compteur_Id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for abonnement in abonnements %}
+            <tr>
+                <td>{{ abonnement.id }}</td>
+                <td>{{ abonnement.contrat }}</td>
+                <td>{{ abonnement.date ? abonnement.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ abonnement.cumulAnc }}</td>
+                <td>{{ abonnement.cumulNouv }}</td>
+                <td>{{ abonnement.compteur.id }}</td>
+                <td>
+                    <a href="{{ path('abonnement_show', {'id': abonnement.id}) }}">show</a>
+                    <a href="{{ path('abonnement_edit', {'id': abonnement.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('abonnement_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}">	
+	<link rel="stylesheet" href="{{ asset('css/login.css') }}">
+{% endblock %}
+{% block title %}New Compteur{% endblock %}
+
+{% block body %}
+    <h1>Create new Compteur</h1>
+
+    {{ include('compteur/_form.html.twig') }}
+
+    <a href="{{ path('compteur_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+{% endblock %}
+{% block title %}Compteur index{% endblock %}
+
+{% block body %}
+    <h1>Compteur index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Numero</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for compteur in compteurs %}
+            <tr>
+                <td>{{ compteur.id }}</td>
+                <td>{{ compteur.numero }}</td>
+                <td>
+                    <a href="{{ path('compteur_show', {'id': compteur.id}) }}">show</a>
+                    <a href="{{ path('compteur_edit', {'id': compteur.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('compteur_new') }}" class="alert-link">Create new</a>
+{% endblock %}
