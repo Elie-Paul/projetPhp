@@ -57,6 +57,10 @@
                 <td>{{ abonnement.contrat }}</td>
             </tr>
             <tr>
+                <th>Num_Compteur</th>
+                <td>{{ abonnement.compteur.numero }}</td>
+            </tr>
+            <tr>
                 <th>Date</th>
                 <td>{{ abonnement.date ? abonnement.date|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
