@@ -6,7 +6,7 @@
 {% block title %}Abonnement index{% endblock %}
 
 {% block body %}
-    <h1>Abonnement index</h1>
+    <h1>Abonnements</h1>
 
     <table class="table">
         <thead>
@@ -16,7 +16,7 @@
                 <th>Date</th>
                 <th>CumulAnc</th>
                 <th>CumulNouv</th>
-                <th>Compteur_Id</th>
+                <th>Num_Compteur</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -28,7 +28,7 @@
                 <td>{{ abonnement.date ? abonnement.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ abonnement.cumulAnc }}</td>
                 <td>{{ abonnement.cumulNouv }}</td>
-                <td>{{ abonnement.compteur.id }}</td>
+                <td>{{ abonnement.compteur.numero }}</td>
                 <td>
                     <a href="{{ path('abonnement_show', {'id': abonnement.id}) }}">show</a>
                     <a href="{{ path('abonnement_edit', {'id': abonnement.id}) }}">edit</a>

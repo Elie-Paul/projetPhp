@@ -35,6 +35,8 @@ class AbonnementController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $abonnement->setDate(new \DateTime());
+            $abonnement->setCumulAnc(0);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($abonnement);
             $entityManager->flush();
@@ -67,6 +69,8 @@ class AbonnementController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $abonnement->setDate(new \DateTime());
+            $abonnement->setCumulAnc($abonnement->getCumulAnc()+$abonnement->getCumulNouv());
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('abonnement_index', [

@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}"> 
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 {% endblock %}
-{% block title %}Facture index{% endblock %}
+{% block title %}Factures{% endblock %}
 
 {% block body %}
     <h1>Facture index</h1>
@@ -13,10 +13,10 @@
             <tr>
                 <th>Id</th>
                 <th>Mois</th>
+                <th>Contrat</th>
                 <th>Consomation</th>
                 <th>Prix</th>
                 <th>Reglement</th>
-                <th>Abonnement_Id</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -25,10 +25,10 @@
             <tr>
                 <td>{{ facture.id }}</td>
                 <td>{{ facture.mois }}</td>
+                <td>{{ facture.abonnement.contrat }}</td>
                 <td>{{ facture.consomation }}</td>
                 <td>{{ facture.prix }}</td>
                 <td>{{ facture.reglement ? 'Yes' : 'No' }}</td>
-                <td>{{ facture.abonnement.id }}</td>
                 <td>
                     <a href="{{ path('facture_show', {'id': facture.id}) }}">show</a>
                     <a href="{{ path('facture_edit', {'id': facture.id}) }}">edit</a>

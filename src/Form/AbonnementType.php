@@ -15,8 +15,6 @@ class AbonnementType extends AbstractType
     {
         $builder
             ->add('contrat')
-            ->add('date')
-            ->add('cumulAnc')
             ->add('cumulNouv')
             ->add('compteur', EntityType::class, [
                 'class' => Compteur::class,

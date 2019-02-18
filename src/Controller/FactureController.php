@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Facture;
+use App\Entity\Abonnement;
 use App\Form\FactureType;
 use App\Repository\FactureRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -35,6 +36,7 @@ class FactureController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $facture->setConsomation($facture->getAbonnement()->getCumulAnc());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($facture);
             $entityManager->flush();
@@ -67,6 +69,7 @@ class FactureController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $facture->setConsomation($facture->getAbonnement()->getCumulAnc());
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('facture_index', [

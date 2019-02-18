@@ -1,11 +1,49 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/style.css') }}"> 
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <!--link rel="stylesheet" href="{{ asset('css/login.css') }}"-->
+    <link rel="stylesheet" href="{{ asset('print.css') }}" type="text/css" media="print" />
 {% endblock %}
 {% block title %}Abonnement{% endblock %}
 
 {% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .link1{padding: 10px 15px;
+            border-radius: 4px;
+            background-color: #000033;
+            padding: 12px 20px;
+            color: #deeaee;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            }
+    .link2{padding: 10px 15px;
+            border-radius: 4px;
+            position: relative;
+            left: 2em;
+            background-color: #000033;
+            padding: 12px 20px;
+            color: #deeaee;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            }
+
+    a:link, a:hover {
+        text-decoration: none;
+        color: #00b33c;      
+    }
+    
+    .imp{
+        border-radius: 4px;
+        position: relative;
+        left: 10em;
+        top: 2em;
+    }
+
+</style>
     <h1>Abonnement</h1>
 
     <table class="table">
@@ -33,9 +71,25 @@
         </tbody>
     </table>
 
-    <a href="{{ path('abonnement_index') }}">back to list</a>
+    <div id="no_impression">
+        <a class="link1" href="{{ path('abonnement_index') }}">back to list</a>
 
-    <a href="{{ path('abonnement_edit', {'id': abonnement.id}) }}">edit</a>
+        <a class="link2" href="{{ path('abonnement_edit', {'id': abonnement.id}) }}">edit</a>
+    </div>
 
-    {{ include('abonnement/_delete_form.html.twig') }}
+    <div>
+        <input class="imp" id="no_impression" name="impression" type="button" onclick="imprimer_page()" value="Print" />
+    </div>
+
+    <div id="no_impression">
+        {{ include('abonnement/_delete_form.html.twig') }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        function imprimer_page(){
+        window.print();
+        }
+    </script>
 {% endblock %}

@@ -15,7 +15,6 @@ class FactureType extends AbstractType
     {
         $builder
             ->add('mois')
-            ->add('consomation')
             ->add('prix')
             ->add('reglement')
             ->add('abonnement', EntityType::class, [
